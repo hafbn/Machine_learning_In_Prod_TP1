@@ -2,7 +2,7 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
-describe('Untitled', function() {
+describe('test_react', function() {
   //this.timeout(30000)
   let driver
   let vars
@@ -13,9 +13,11 @@ describe('Untitled', function() {
   afterEach(async function() {
     await driver.quit();
   })
-  it('Untitled', async function() {
+  it('test_react', async function() {
     await driver.get("http://localhost:3000/")
     await driver.manage().window().setRect({ width: 790, height: 816 })
+    await driver.findElement(By.name("name")).click()
+    await driver.findElement(By.name("name")).sendKeys("Ngoc")
     await driver.findElement(By.css("button")).click()
     assert(await driver.switchTo().alert().getText() == "Success")
   })
